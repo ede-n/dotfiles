@@ -6,7 +6,9 @@ BASEDIR=$(dirname $0)
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/naveenbabuede/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Update Homebrew recipes
