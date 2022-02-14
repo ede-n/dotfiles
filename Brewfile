@@ -33,4 +33,4 @@ brew 'wget'
 
 # Apps
 cask 'iterm2'
-
+cask 'rectangle'
