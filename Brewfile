@@ -36,3 +36,6 @@ cask 'iterm2'
 cask 'rectangle'
 cask '1password'
 cask '1password-cli'
+# map right_cmd button to escape
+# map capslock button to left_ctrl
+cask 'karabiner-elements'

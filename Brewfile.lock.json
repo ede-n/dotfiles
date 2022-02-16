@@ -2,10 +2,10 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "ef529c9cdcdf0e61f36d43e9a29edaa7d889c687"
+        "revision": "8a0ec34cab0e13819113f4b9202f50450bb4bc61"
       },
       "homebrew/bundle": {
-        "revision": "14fb822f977eb68e5fc4523085a865b56948bf14"
+        "revision": "3b7cba3e1c32e5908f8f688033bd614195c020d7"
       }
     },
     "brew": {
@@ -656,7 +656,7 @@
         }
       },
       "rectangle": {
-        "version": "0.50,55",
+        "version": "0.51,57",
         "options": {
           "full_name": "rectangle",
           "args": {
@@ -681,6 +681,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "karabiner-elements": {
+        "version": "14.3.0",
+        "options": {
+          "full_name": "karabiner-elements",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     }
   },
@@ -689,7 +698,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.3.15",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "2bb6f4a97f9ec5d9c1ca2e8cb72555de557f4699",
+        "Homebrew/homebrew-core": "25b1de29713aa8117ef41aa4f622646b12b8fc83",
         "CLT": "13.2.0.0.1.1638488800",
         "Xcode": "13.2.1",
         "macOS": "12.1"

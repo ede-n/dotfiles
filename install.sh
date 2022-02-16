@@ -3,8 +3,8 @@
 echo "Setting up Macbook..."
 
 BASE_DIR="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-echo "$BASE_DIR"
-# Check for Homebrew and install if we don't have it
+
+# Check for Homebrew and install
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ln -fs "${BASE_DIR}/zsh/.zprofile" "${HOME}/.zprofile"
@@ -18,7 +18,14 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
+# Check for oh-my-zsh and install
+if [ ! -d ~/.oh-my-zsh ]; then
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 ln -fs "${BASE_DIR}/zsh/.zshrc" "${HOME}/.zshrc" 
+ln -fs "${BASE_DIR}/zsh/.zprofile" "${HOME}/.zprofile"
+
 
 #ln -fs "${clone_path}/.zshenv" "${HOME}/.zshenv" \
 #    && ln -fs "${clone_path}/.config/zsh/.zshrc" "${HOME}/.config/zsh/.zshrc" \
