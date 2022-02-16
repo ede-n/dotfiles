@@ -34,3 +34,5 @@ brew 'wget'
 # Apps
 cask 'iterm2'
 cask 'rectangle'
+cask '1password'
+cask '1password-cli'
