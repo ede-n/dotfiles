@@ -5,7 +5,7 @@ export PATH=$GNUBINS_PATH:$PATH
 ###------oh-my-zsh---------###
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -20,11 +20,24 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git 
+        zsh-syntax-highlighting
 	zsh-autosuggestions
+        k
 )
 
 source $ZSH/oh-my-zsh.sh
 ###-----oh-my-zsh-----###
 
+[[ -f ~/.aliases ]] && source ~/.aliases
 
+###----color----###
+# makes color constants available
+autoload -U colors
+colors
 
+# enable colored output from ls, etc. on FreeBSD-based systems
+export CLICOLOR=1
+###---color---###
+
+# Make powerlevel10k look like robbyrussell theme
+source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k/config/p10k-robbyrussell.zsh
