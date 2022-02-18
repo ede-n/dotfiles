@@ -1,6 +1,7 @@
 # Taps
 tap 'homebrew/cask'
 tap 'homebrew/bundle'
+tap 'homebrew/cask-fonts'
 
 # Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
@@ -39,6 +40,9 @@ cask '1password-cli'
 # map right_cmd button to escape
 # map capslock button to left_ctrl
 cask 'karabiner-elements'
+# fonts
+cask 'font-meslo-lg-nerd-font'
+cask 'font-fira-code'
 
 # People.ai Apps
 cask 'pritunl'
