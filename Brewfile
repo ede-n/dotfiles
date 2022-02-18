@@ -39,3 +39,6 @@ cask '1password-cli'
 # map right_cmd button to escape
 # map capslock button to left_ctrl
 cask 'karabiner-elements'
+
+# People.ai Apps
+cask 'pritunl'

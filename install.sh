@@ -21,14 +21,26 @@ brew bundle
 # Check for oh-my-zsh and install
 if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # Install zsh-syntax-highlighting: The Syntax Highlighting plugin adds beautiful colors to the commands being typed
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  # Install zsh-autosuggestions: This plugin auto suggests any of the previous commands.
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+else
+  echo "Updating zsh-syntax-highlighting plugin..."
+  pushd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting > /dev/null 2>&1
+  git pull
+  popd > /dev/null 2>&1
+  pushd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions > /dev/null 2>&1
+  echo "Updating zsh-autosuggestions plugin..."
+  git pull
+  popd > /dev/null 2>&1
 fi
+
 
 ln -fs "${BASE_DIR}/zsh/.zshrc" "${HOME}/.zshrc" 
 ln -fs "${BASE_DIR}/zsh/.zprofile" "${HOME}/.zprofile"
+ln -fs "${BASE_DIR}/zsh/.zshenv" "${HOME}/.zshenv"
+
+ln -fs "${BASE_DIR}/git/.gitconfig" "${HOME}/.gitconfig"
 
 
-#ln -fs "${clone_path}/.zshenv" "${HOME}/.zshenv" \
-#    && ln -fs "${clone_path}/.config/zsh/.zshrc" "${HOME}/.config/zsh/.zshrc" \
-#    && ln -fs "${clone_path}/.config/zsh/.zprofile" "${HOME}/.config/zsh/.zprofile" \
-#    && ln -fs "${clone_path}/.config/zsh/.aliases" "${HOME}/.config/zsh/.aliases" \
-#    && ln -fs "${clone_path}/.gitconfig" "${HOME}/.gitconfig" 
