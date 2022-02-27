@@ -1,6 +1,11 @@
 # Replace MacOS default BSD binaries with GNU
 GNUBINS_PATH=$(find /opt/homebrew/opt -type d -follow -name gnubin -print | awk '{printf "%s:", $0}')
 export PATH=$GNUBINS_PATH:$PATH
+export PATH=$HOME/.local/bin:$PATH
+# For tfswitch
+export PATH=$HOME/bin:$PATH
+
+export GPG_TTY=$(tty)
 
 ###------oh-my-zsh---------###
 # Path to your oh-my-zsh installation.
@@ -20,13 +25,14 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git 
-        zsh-syntax-highlighting
+    zsh-syntax-highlighting
 	zsh-autosuggestions
-        k
+    k
+    extract
 )
 
 source $ZSH/oh-my-zsh.sh
-###-----oh-my-zsh-----###
+###-----oh-my-zsh ends-----###
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 
@@ -37,7 +43,10 @@ colors
 
 # enable colored output from ls, etc. on FreeBSD-based systems
 export CLICOLOR=1
-###---color---###
+###---color ends---###
 
 # Make powerlevel10k look like robbyrussell theme
 source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k/config/p10k-robbyrussell.zsh
+
+###--- pyenv --- ###
+eval "$(pyenv init -)"

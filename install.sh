@@ -30,6 +30,9 @@ function install_or_update_omz_component() {
    echo ""
 }
 
+########### Create a local installations directory ###########
+mkdir -p ${HOME}/.local/bin/
+
 ########### Configure Macos #################
 echo "Configuring MacOs from ${HOME}/.macos..."
 ln -f "${BASE_DIR}/macos/.macos" "${HOME}/.macos"
@@ -73,5 +76,17 @@ ln -fs "${BASE_DIR}/zsh/.zshenv" "${HOME}/.zshenv"
 
 ############# git ###############
 ln -fs "${BASE_DIR}/git/.gitconfig" "${HOME}/.gitconfig"
+
+############ python #############
+# Depends on `brew install pyenv` and the presence of init scripts in .zshrc and .zprofile
+pyenv install --skip-existing 3.9.10
+pyenv global 3.9.10
+pip install ec2instanceconnectcli ansible==2.10.7 boto3
+
+########## Github CodeSigning ##############
+git config --global gpg.program gpg
+# This will fail until the GPG keyring is primed.
+git config --global user.signingkey C147AAAF4D51476A686E6BA8EA7508B46FD37113
+git config --global commit.gpgsign true
 
 

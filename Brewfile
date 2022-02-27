@@ -2,10 +2,12 @@
 tap 'homebrew/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/cask-fonts'
+tap 'warrensbox/tap'
+# For github cli auth https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+tap 'microsoft/git'
 
 # Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
-
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # See https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#setting-up-macos
@@ -30,11 +32,18 @@ brew 'hub'
 brew 'tree'
 brew 'trash'
 brew 'wget'
-
+brew 'pyenv'
+brew 'jq'
+brew 'ripgrep'
+# for code signing
+brew 'gnupg'
+brew 'pinentry-mac'
 
 # Apps
 cask 'iterm2'
 cask 'rectangle'
+cask 'flux'
+cask 'raycast'
 cask '1password'
 cask '1password-cli'
 # map right_cmd button to escape
@@ -43,6 +52,10 @@ cask 'karabiner-elements'
 # fonts
 cask 'font-meslo-lg-nerd-font'
 cask 'font-fira-code'
+cask 'git-credential-manager-core'
 
 # People.ai Apps
 cask 'pritunl'
+# People.ai Binaries
+brew 'warrensbox/tap/tfswitch'
+brew 'terragrunt'

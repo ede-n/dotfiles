@@ -8,16 +8,23 @@
   diff = cat
   show = cat
 
+[user]
+  email = naveen.ede@people.ai
+  name = Naveen Babu Ede
+	signingkey = C147AAAF4D51476A686E6BA8EA7508B46FD37113
+
 # Source: http://michaelwales.com/articles/make-gitconfig-work-for-you/
 [credential]
     helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager-core
 
 [color]
     ui = true
 
 [color "branch"]
-    current = yellow reverse
-    local = yello
+    current = yellow
+    local = yellow
     remote = green
 
 [color "diff"]
@@ -39,3 +46,9 @@
 
 [diff]
     mnemonicprefix = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
