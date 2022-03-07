@@ -31,7 +31,8 @@ function install_or_update_omz_component() {
 }
 
 ########### Create a local installations directory ###########
-mkdir -p ${HOME}/.local/bin/
+export LOCAL_BIN_DIR="${HOME}/.local/bin/"
+mkdir -p "$LOCAL_BIN_DIR"
 
 ########### Configure Macos #################
 echo "Configuring MacOs from ${HOME}/.macos..."
@@ -69,6 +70,8 @@ install_or_update_omz_component $omz_component_type_plugin "zsh-autosuggestions"
 install_or_update_omz_component $omz_component_type_plugin "k" https://github.com/supercrabtree/k
 install_or_update_omz_component "themes" "powerlevel10k" https://github.com/romkatv/powerlevel10k.git
 
+ln -f "${BASE_DIR}/zsh/.p10k.zsh" "${HOME}/.p10k.zsh"
+ln -f "${BASE_DIR}/zsh/zsh_functions_peopleai" "${HOME}/.zsh_functions_peopleai"
 ln -f "${BASE_DIR}/zsh/aliases" "${HOME}/.aliases"
 ln -fs "${BASE_DIR}/zsh/.zshrc" "${HOME}/.zshrc" 
 ln -fs "${BASE_DIR}/zsh/.zprofile" "${HOME}/.zprofile"
@@ -81,12 +84,8 @@ ln -fs "${BASE_DIR}/git/.gitconfig" "${HOME}/.gitconfig"
 # Depends on `brew install pyenv` and the presence of init scripts in .zshrc and .zprofile
 pyenv install --skip-existing 3.9.10
 pyenv global 3.9.10
-pip install ec2instanceconnectcli ansible==2.10.7 boto3
 
-########## Github CodeSigning ##############
-git config --global gpg.program gpg
-# This will fail until the GPG keyring is primed.
-git config --global user.signingkey C147AAAF4D51476A686E6BA8EA7508B46FD37113
-git config --global commit.gpgsign true
+
+source "${BASE_DIR}/peopleai_install.sh"
 
 

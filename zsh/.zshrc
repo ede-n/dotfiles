@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Replace MacOS default BSD binaries with GNU
 GNUBINS_PATH=$(find /opt/homebrew/opt -type d -follow -name gnubin -print | awk '{printf "%s:", $0}')
 export PATH=$GNUBINS_PATH:$PATH
@@ -29,12 +36,17 @@ plugins=(
 	zsh-autosuggestions
     k
     extract
+    kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
 ###-----oh-my-zsh ends-----###
 
 [[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.zsh_functions_peopleai ]] && source ~/.zsh_functions_peopleai
+
+# powerlevel10k config
+[[ -f ~/.p10k.zsh ]] && source ~/.p10.zsh
 
 ###----color----###
 # makes color constants available
@@ -44,9 +56,6 @@ colors
 # enable colored output from ls, etc. on FreeBSD-based systems
 export CLICOLOR=1
 ###---color ends---###
-
-# Make powerlevel10k look like robbyrussell theme
-source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k/config/p10k-robbyrussell.zsh
 
 ###--- pyenv --- ###
 eval "$(pyenv init -)"

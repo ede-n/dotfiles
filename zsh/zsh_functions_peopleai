@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function py_pip_aws_creds() {
+    aws codeartifact login \
+        --tool pip \
+        --domain people-ai \
+        --repository pai-pypi \
+        --region us-east-1
+}

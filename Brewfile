@@ -34,10 +34,14 @@ brew 'trash'
 brew 'wget'
 brew 'pyenv'
 brew 'jq'
+brew 'yq'
 brew 'ripgrep'
 # for code signing
 brew 'gnupg'
 brew 'pinentry-mac'
+## Kubernetes
+brew 'kubectx'
+brew 'kube-ps1'
 
 # Apps
 cask 'iterm2'
