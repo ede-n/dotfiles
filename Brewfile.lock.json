@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "87b3a89af1e63a012129d451f783d0c56f9bdb15"
+        "revision": "1a97c4688c430fed0660e0817c315c9b6661743f"
       },
       "homebrew/bundle": {
         "revision": "31568bb54af6faf32b7d2bbaf53d8e82c1e50e8d"
@@ -1121,6 +1121,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "lens": {
+        "version": "5.4.1,20220304.1",
+        "options": {
+          "full_name": "lens",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     }
   },
@@ -1129,7 +1138,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.4.1",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "acb5ca730c26e79f066268d310de1d331daf62ea",
+        "Homebrew/homebrew-core": "f9236e0f0541794ffec12ab9677bfa96044fb89c",
         "CLT": "13.2.0.0.1.1638488800",
         "Xcode": "13.2.1",
         "macOS": "12.1"

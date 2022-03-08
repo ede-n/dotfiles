@@ -58,8 +58,12 @@ cask 'font-meslo-lg-nerd-font'
 cask 'font-fira-code'
 cask 'git-credential-manager-core'
 
-# People.ai Apps
+## People.ai Apps
+# VPN client
 cask 'pritunl'
+# k8s visualization
+cask 'lens'
 # People.ai Binaries
 brew 'warrensbox/tap/tfswitch'
 brew 'terragrunt'
+
