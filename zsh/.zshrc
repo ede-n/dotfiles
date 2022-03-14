@@ -44,7 +44,7 @@ source $ZSH/oh-my-zsh.sh
 ###-----oh-my-zsh ends-----###
 
 [[ -f ~/.aliases ]] && source ~/.aliases
-[[ -f ~/.zsh_functions_peopleai ]] && source ~/.zsh_functions_peopleai
+[[ -f ~/.zsh_functions_pai ]] && source ~/.zsh_functions_pai
 
 # powerlevel10k config
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh

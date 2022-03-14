@@ -1,1 +1,1 @@
-[[ -f ~/.aws-cli-peopleai ]] && source ~/.aws-cli-peopleai
+[[ -f ~/.aws-cli-pai ]] && source ~/.aws-cli-pai

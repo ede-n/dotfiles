@@ -71,7 +71,7 @@ install_or_update_omz_component $omz_component_type_plugin "k" https://github.co
 install_or_update_omz_component "themes" "powerlevel10k" https://github.com/romkatv/powerlevel10k.git
 
 ln -f "${BASE_DIR}/zsh/.p10k.zsh" "${HOME}/.p10k.zsh"
-ln -f "${BASE_DIR}/zsh/zsh_functions_peopleai" "${HOME}/.zsh_functions_peopleai"
+ln -f "${BASE_DIR}/zsh/zsh_functions_pai" "${HOME}/.zsh_functions_pai"
 ln -f "${BASE_DIR}/zsh/aliases" "${HOME}/.aliases"
 ln -fs "${BASE_DIR}/zsh/.zshrc" "${HOME}/.zshrc" 
 ln -fs "${BASE_DIR}/zsh/.zprofile" "${HOME}/.zprofile"
@@ -86,6 +86,6 @@ pyenv install --skip-existing 3.9.10
 pyenv global 3.9.10
 
 source "${BASE_DIR}/golang_pkg_install.sh"
-source "${BASE_DIR}/peopleai_install.sh"
+source "${BASE_DIR}/pai_install.sh"
 
 
