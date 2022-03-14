@@ -9,6 +9,7 @@ fi
 GNUBINS_PATH=$(find /opt/homebrew/opt -type d -follow -name gnubin -print | awk '{printf "%s:", $0}')
 export PATH=$GNUBINS_PATH:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$PATH:$(go env GOPATH)/bin
 # For tfswitch
 export PATH=$HOME/bin:$PATH
 
@@ -46,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.zsh_functions_peopleai ]] && source ~/.zsh_functions_peopleai
 
 # powerlevel10k config
-[[ -f ~/.p10k.zsh ]] && source ~/.p10.zsh
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 ###----color----###
 # makes color constants available

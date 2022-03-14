@@ -85,7 +85,7 @@ ln -fs "${BASE_DIR}/git/.gitconfig" "${HOME}/.gitconfig"
 pyenv install --skip-existing 3.9.10
 pyenv global 3.9.10
 
-
+source "${BASE_DIR}/golang_pkg_install.sh"
 source "${BASE_DIR}/peopleai_install.sh"
 
 

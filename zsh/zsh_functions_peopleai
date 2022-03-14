@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+function echo_stderr {
+  >&2 echo "$@"
+}
+
 function py_pip_aws_creds() {
     aws codeartifact login \
         --tool pip \
@@ -7,3 +11,54 @@ function py_pip_aws_creds() {
         --repository pai-pypi \
         --region us-east-1
 }
+
+function k8s_node_instance_id() {
+    local -r arg_node_name="${1:?Node name argument is required}"
+
+    local instance_id=$(kubectl get nodes/"${arg_node_name}" -o jsonpath='{.spec.providerID}' | awk -F '/' '{ print $NF}')
+
+    echo "${instance_id}"
+}
+
+function tableau_instance_id() {
+    local -r arg_region="${1:-us-west-2}"
+
+    echo_stderr -e "Region: ${arg_region}"
+
+    local tableau_instance=$(aws ec2 describe-instances \
+      --filters Name=tag:Vendor,Values=Tableau \
+      --region ${arg_region} \
+    | jq -r '.Reservations[0].Instances[0].InstanceId')
+
+    echo "${tableau_instance}"
+}
+
+#### SSH into instances
+
+function ssh_tableau() {
+    local -r arg_region="${1:?Region argument is required}"
+
+    local instance_id=$(tableau_instance_id ${arg_region})
+    echo "SSH into Tableau Ec2 instance with id ${instance_id} in region ${arg_region}..."
+    mssh -r ${arg_region} \
+         -o UserKnownHostsFile=/dev/null \
+         ubuntu@${instance_id}
+}
+
+alias stage_ssh_tableau='ssh_tableau us-west-2'
+alias prod_ssh_tableau='ssh_tableau us-east-1'
+
+function ssh_k8s_node() {
+   local -r arg_region="${1:?Region argument is required}"
+   local -r arg_node_name="${2:?Node name argument is required}"
+
+   local instance_id=$(k8s_node_instance_id ${arg_node_name})
+   echo "SSH into K8s Node Ec2 instance with id ${instance_id} in region ${arg_region}..."
+   mssh  -r ${arg_region} \
+         -o UserKnownHostsFile=/dev/null \
+         ubuntu@${instance_id}
+}
+
+# Usage: stage_ssh_k8s_node ip-1xx-xx-xx-xx.us-west-2.compute.internal
+alias stage_ssh_k8s_node='ssh_k8s_node us-west-2 '
+alias prod_ssh_k8s_node='ssh_k8s_node us-east-1 '

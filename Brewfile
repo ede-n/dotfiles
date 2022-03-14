@@ -36,6 +36,7 @@ brew 'pyenv'
 brew 'jq'
 brew 'yq'
 brew 'ripgrep'
+brew 'go'
 # for code signing
 brew 'gnupg'
 brew 'pinentry-mac'
