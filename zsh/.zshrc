@@ -10,6 +10,7 @@ GNUBINS_PATH=$(find /opt/homebrew/opt -type d -follow -name gnubin -print | awk 
 export PATH=$GNUBINS_PATH:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$PATH:$(go env GOPATH)/bin
+export PATH="$HOME/.poetry/bin:$PATH"
 # For tfswitch
 export PATH=$HOME/bin:$PATH
 
@@ -60,3 +61,5 @@ export CLICOLOR=1
 
 ###--- pyenv --- ###
 eval "$(pyenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

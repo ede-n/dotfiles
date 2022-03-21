@@ -37,12 +37,15 @@ brew 'jq'
 brew 'yq'
 brew 'ripgrep'
 brew 'go'
+brew 'fzf'
 # for code signing
 brew 'gnupg'
 brew 'pinentry-mac'
 ## Kubernetes
 brew 'kubectx'
 brew 'kube-ps1'
+## Github Actions
+brew 'act'
 
 # Apps
 cask 'iterm2'
@@ -58,6 +61,8 @@ cask 'karabiner-elements'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-fira-code'
 cask 'git-credential-manager-core'
+cask 'mactex'
+cask 'tomighty'
 
 ## Pai Apps
 # VPN client

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source /opt/gruntwork/bash-commons/bootstrap.sh
+
 ########## Github CodeSigning ##############
 NEDE_GPG_KEY='C147AAAF4D51476A686E6BA8EA7508B46FD37113'
 
@@ -9,7 +11,9 @@ git config --global user.signingkey ${NEDE_GPG_KEY}
 git config --global commit.gpgsign true
 
 ########## Python packages ################
+python -m pip install --upgrade pip
 pip install ec2instanceconnectcli ansible==2.10.7 boto3
+pip install databricks-cli
 
 ########## Kubernetes #####################
 
@@ -20,6 +24,7 @@ function install_kubectl() {
   INSTALL_DIR="${LOCAL_BIN_DIR:-${HOME}/.local/bin/}"
 
   if [[ -f "${INSTALL_DIR}/kubectl" && "${reinstall}" == "N" ]]; then
+     echo "kubectl already installed."
      return
   fi
 

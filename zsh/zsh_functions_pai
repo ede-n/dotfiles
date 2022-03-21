@@ -4,12 +4,37 @@ function echo_stderr {
   >&2 echo "$@"
 }
 
-function py_pip_aws_creds() {
+######### Aws #################
+function aws_codeartifact_creds() {
     aws codeartifact login \
         --tool pip \
         --domain people-ai \
         --repository pai-pypi \
         --region us-east-1
+}
+
+function aws_kms_decrypt() {
+    local -r arg_encrypted_secret="${1:?Encrypted secret required}"
+    local -r arg_region="${2:?Region argument is required}"
+
+    echo "${arg_encrypted_secret}..."
+    aws kms decrypt \
+      --ciphertext-blob fileb://<(echo "${arg_encrypted_secret}" | base64 -d) \
+      --output text \
+      --query Plaintext \
+      --region "${arg_region}" | \
+      base64 --decode
+}
+
+function aws_kms_encrypt() {
+    local -r arg_plaintext_secret="${1:?First argument Plaintext secret required}"
+    local -r arg_key_alias="${2:?Second argument KeyAlias required}"
+    local -r arg_region="${3:?Third argument Region is required}"
+
+    aws kms encrypt \
+      --plaintext "${arg_plaintext_secret}" \
+      --key-id alias/"${arg_key_alias}" \
+      --region "${arg_region}"
 }
 
 function k8s_node_instance_id() {
@@ -56,7 +81,9 @@ function ssh_k8s_node() {
    echo "SSH into K8s Node Ec2 instance with id ${instance_id} in region ${arg_region}..."
    mssh  -r ${arg_region} \
          -o UserKnownHostsFile=/dev/null \
+         -o StrictHostKeyChecking=no \
          ubuntu@${instance_id}
+
 }
 
 # Usage: stage_ssh_k8s_node ip-1xx-xx-xx-xx.us-west-2.compute.internal

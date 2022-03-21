@@ -30,6 +30,18 @@ function install_or_update_omz_component() {
    echo ""
 }
 
+function install_bash_commons() {
+  local TMP_DIR=$(mktemp -d -t bash_commons-XXXXXX)
+
+  git clone https://github.com/gruntwork-io/bash-commons.git $TMP_DIR/bash-commons
+
+  sudo mkdir -p /opt/gruntwork
+  sudo chown -R naveenbabuede:staff /opt/gruntwork
+  cp -r ${TMP_DIR}/bash-commons/modules/bash-commons/src /opt/gruntwork/bash-commons
+  sudo chown -R "naveenbabuede:staff" /opt/gruntwork/bash-commons
+  rm -rf ${TMP_DIR}
+}
+
 ########### Create a local installations directory ###########
 export LOCAL_BIN_DIR="${HOME}/.local/bin/"
 mkdir -p "$LOCAL_BIN_DIR"
@@ -62,6 +74,10 @@ if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# If any of the bash scripts rely on bash-commons
+# they need to run after this
+install_bash_commons
+
 omz_component_type_plugin="plugins"
 # The Syntax Highlighting plugin adds beautiful colors to the commands being typed
 install_or_update_omz_component $omz_component_type_plugin "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -76,6 +92,10 @@ ln -f "${BASE_DIR}/zsh/aliases" "${HOME}/.aliases"
 ln -fs "${BASE_DIR}/zsh/.zshrc" "${HOME}/.zshrc" 
 ln -fs "${BASE_DIR}/zsh/.zprofile" "${HOME}/.zprofile"
 ln -fs "${BASE_DIR}/zsh/.zshenv" "${HOME}/.zshenv"
+ln -fs "${BASE_DIR}/vim/.ideavimrc" "${HOME}/.ideavimrc"
+
+############# fzf ###############
+"$(brew --prefix)"/opt/fzf/install --all
 
 ############# git ###############
 ln -fs "${BASE_DIR}/git/.gitconfig" "${HOME}/.gitconfig"
@@ -85,7 +105,12 @@ ln -fs "${BASE_DIR}/git/.gitconfig" "${HOME}/.gitconfig"
 pyenv install --skip-existing 3.9.10
 pyenv global 3.9.10
 
+# These should be at the very bottom as they rely on aliases/functions
+source "${BASE_DIR}/zsh/zsh_functions_pai"
+echo "Login to AWS code artifact repository..."
+aws_codeartifact_creds
 source "${BASE_DIR}/golang_pkg_install.sh"
 source "${BASE_DIR}/pai_install.sh"
+source "${BASE_DIR}/post_python_install.sh"
 
 

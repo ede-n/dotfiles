@@ -11,7 +11,7 @@
 [user]
   email = naveen.ede@people.ai
   name = Naveen Babu Ede
-  signingkey = C147AAAF4D51476A686E6BA8EA7508B46FD37113
+	signingkey = C147AAAF4D51476A686E6BA8EA7508B46FD37113
 
 # Source: http://michaelwales.com/articles/make-gitconfig-work-for-you/
 [credential]
