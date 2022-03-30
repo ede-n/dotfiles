@@ -112,5 +112,6 @@ aws_codeartifact_creds
 source "${BASE_DIR}/golang_pkg_install.sh"
 source "${BASE_DIR}/pai_install.sh"
 source "${BASE_DIR}/post_python_install.sh"
+"${BASE_DIR}/post_java_install.py"
 
 

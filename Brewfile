@@ -5,7 +5,8 @@ tap 'homebrew/cask-fonts'
 tap 'warrensbox/tap'
 # For github cli auth https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
 tap 'microsoft/git'
-
+# Java via Eclipse Adoptium
+tap 'homebrew/cask-versions'
 # Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
 
@@ -46,6 +47,14 @@ brew 'kubectx'
 brew 'kube-ps1'
 ## Github Actions
 brew 'act'
+brew 'cmake'
+brew 'pre-commit'
+brew 'markdownlint-cli'
+## Java
+brew 'jenv'
+brew 'sbt'
+cask 'temurin8'
+cask 'temurin11'
 
 # Apps
 cask 'iterm2'
@@ -63,6 +72,7 @@ cask 'font-fira-code'
 cask 'git-credential-manager-core'
 cask 'mactex'
 cask 'tomighty'
+cask 'docker'
 
 ## Pai Apps
 # VPN client

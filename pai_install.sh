@@ -45,4 +45,7 @@ function install_kubectl() {
   sudo chown root: "${INSTALL_DIR}/kubectl"
 }
 
+########## pre-commit ################
+pre-commit install
+
 install_kubectl

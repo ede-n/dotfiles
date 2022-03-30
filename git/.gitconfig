@@ -1,5 +1,6 @@
 [init]
   defaultBranch = main
+  templateDir = ~/.git-template
 
 [merge]
   ff = only
@@ -43,6 +44,7 @@
     compression = 9
     excludesfile = ~/.gitignore_global
     filemode = false
+    pager = cat
 
 [diff]
     mnemonicprefix = true

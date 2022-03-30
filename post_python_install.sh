@@ -15,3 +15,4 @@ function install_poetry() {
 }
 
 install_poetry
+poetry config virtualenvs.in-project true

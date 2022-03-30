@@ -13,6 +13,7 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$HOME/.poetry/bin:$PATH"
 # For tfswitch
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/workspace/peopleai/platform/bin:$PATH
 
 export GPG_TTY=$(tty)
 
@@ -39,6 +40,7 @@ plugins=(
     k
     extract
     kubectl
+    poetry
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -61,5 +63,10 @@ export CLICOLOR=1
 
 ###--- pyenv --- ###
 eval "$(pyenv init -)"
+
+###--- jenv ---###
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
