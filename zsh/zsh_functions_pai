@@ -77,12 +77,12 @@ function ssh_k8s_node() {
    local -r arg_region="${1:?Region argument is required}"
    local -r arg_node_name="${2:?Node name argument is required}"
 
-   local instance_id=$(k8s_node_instance_id ${arg_node_name})
+   local instance_id=$(k8s_node_instance_id "${arg_node_name}")
    echo "SSH into K8s Node Ec2 instance with id ${instance_id} in region ${arg_region}..."
    mssh  -r ${arg_region} \
          -o UserKnownHostsFile=/dev/null \
          -o StrictHostKeyChecking=no \
-         ubuntu@${instance_id}
+         "ubuntu@${instance_id}"
 
 }
 

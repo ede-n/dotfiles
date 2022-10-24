@@ -2,3 +2,8 @@ alias ls='ls --color=auto'
 alias kg='kubectl get'
 alias kd='kubectl describe'
 alias java_home='/usr/libexec/java_home -V'
+# https://github.com/antlr/antlr4/blob/master/doc/getting-started.md
+alias antlr4='java -Xmx500M -cp "${HOME}/.local/bin/antlr4.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx500M -cp "/usr/local/lib/antlr4.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+alias dbp='databricks --profile PROD '
+alias dbs='databricks --profile STAGE '

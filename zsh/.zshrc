@@ -68,5 +68,17 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+### postgresql
+export PATH="/opt/homebrew/opt/postgresql@12/bin:$PATH"
+
+### Rust is manually installed
+export PATH="$HOME/.cargo/bin:$PATH"
+source "$HOME/.cargo/env"
+
+### Antlr
+export CLASSPATH=".:${HOME}/.local/bin/antlr4.jar:$CLASSPATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### Nvm
+source $(brew --prefix nvm)/nvm.sh

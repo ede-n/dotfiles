@@ -4,10 +4,11 @@
 
 [merge]
   ff = only
+  conflictstyle = diff3
 
-[pager]
-  diff = cat
-  show = cat
+# [pager]
+#   diff = cat
+#   show = cat
 
 [user]
   email = naveen.ede@people.ai
@@ -20,37 +21,46 @@
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager-core
 
-[color]
-    ui = true
-
-[color "branch"]
-    current = yellow
-    local = yellow
-    remote = green
-
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = red
+# [color]
+#     ui = true
+#
+# [color "branch"]
+#     current = yellow
+#     local = yellow
+#     remote = green
+#
+# [color "diff"]
+#     meta = yellow bold
+#     frag = magenta bold
+#     old = red bold
+#     new = green bold
+#
+# [color "status"]
+#     added = yellow
+#     changed = green
+#     untracked = red
 
 [core]
     autocrlf = input
     compression = 9
     excludesfile = ~/.gitignore_global
     filemode = false
-    pager = cat
+    pager = delta
 
 [diff]
     mnemonicprefix = true
-[credential "https://dev.azure.com"]
-	useHttpPath = true
+    colorMoved = default
 [gpg]
 	program = gpg
 [commit]
 	gpgsign = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    side-by-side = true
+    line-numbers = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true

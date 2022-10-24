@@ -5,10 +5,18 @@ tap 'homebrew/cask-fonts'
 tap 'warrensbox/tap'
 # For github cli auth https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
 tap 'microsoft/git'
+brew 'gh'
 # Java via Eclipse Adoptium
 tap 'homebrew/cask-versions'
 # Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
+
+# eksctl
+tap 'weaveworks/tap'
+brew 'weaveworks/tap/eksctl'
+
+# Leapp
+cask 'leapp'
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # See https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#setting-up-macos
@@ -26,6 +34,9 @@ brew 'findutils'
 # Install Bash 4
 brew 'bash'
 
+# DevUtils
+cask 'devutils'
+
 # Install Binaries
 brew 'awscli'
 brew 'git'
@@ -39,12 +50,28 @@ brew 'yq'
 brew 'ripgrep'
 brew 'go'
 brew 'fzf'
+# https://github.com/sachaos/viddy
+brew 'viddy'
+# Vault
+brew 'vault'
 # for code signing
 brew 'gnupg'
 brew 'pinentry-mac'
+# Cli commands
+brew 'ahoy'
 ## Kubernetes
 brew 'kubectx'
 brew 'kube-ps1'
+brew 'kops'
+brew 'kind'
+brew 'minikube'
+brew 'helm'
+brew 'kustomize'
+brew 'argocd'
+# calculate lines of code
+brew 'cloc'
+# for git diff
+brew 'git-delta'
 ## Github Actions
 brew 'act'
 brew 'cmake'
@@ -55,6 +82,23 @@ brew 'jenv'
 brew 'sbt'
 cask 'temurin8'
 cask 'temurin11'
+# postgresql
+brew 'postgresql@12'
+# Project Management
+cask 'ganttproject'
+
+## Heroku
+tap 'heroku/brew'
+brew 'heroku'
+
+## For backstage
+brew 'nvm'
+
+## CircleCi
+brew 'circleci'
+
+## ProtoBuf
+brew 'protobuf'
 
 # Apps
 cask 'iterm2'
@@ -70,7 +114,7 @@ cask 'karabiner-elements'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-fira-code'
 cask 'git-credential-manager-core'
-cask 'mactex'
+# cask 'mactex'
 cask 'tomighty'
 cask 'docker'
 
