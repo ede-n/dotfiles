@@ -5,10 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# For rust cli productivity tools
+eval "$($(brew --prefix)/bin/zoxide init zsh)"
 # Replace MacOS default BSD binaries with GNU
-GNUBINS_PATH=$(find /opt/homebrew/opt -type d -follow -name gnubin -print | awk '{printf "%s:", $0}')
-export PATH=$GNUBINS_PATH:$PATH
+# GNUBINS_PATH=$(find /opt/homebrew/opt -type d -follow -name gnubin -print | awk '{printf "%s:", $0}')
+# export PATH=$GNUBINS_PATH:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$HOME/.poetry/bin:$PATH"
 # For tfswitch
@@ -46,6 +49,10 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 ###-----oh-my-zsh ends-----###
 
+### Pai env vars used to configure aliases
+[[ -f ~/.config/people-ai/envvars ]] && \
+  source ~/.config/people-ai/envvars || \
+  echo "No envvars file found at ~/.config/people-ai/envvars"
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.zsh_functions_pai ]] && source ~/.zsh_functions_pai
 
@@ -78,7 +85,12 @@ source "$HOME/.cargo/env"
 ### Antlr
 export CLASSPATH=".:${HOME}/.local/bin/antlr4.jar:$CLASSPATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ### Nvm
-source $(brew --prefix nvm)/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
+PATH="$(xcode-select -p)/usr/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+
+### Krew was installed manually
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

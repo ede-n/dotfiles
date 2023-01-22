@@ -75,5 +75,5 @@ function install_kubectl_eks_version() {
 ########## pre-commit ################
 pre-commit install
 
-install_kubectl
+install_kubectl 'y'
 install_kubectl_eks_version

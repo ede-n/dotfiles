@@ -7,3 +7,44 @@ alias antlr4='java -Xmx500M -cp "${HOME}/.local/bin/antlr4.jar:$CLASSPATH" org.a
 alias grun='java -Xmx500M -cp "/usr/local/lib/antlr4.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
 alias dbp='databricks --profile PROD '
 alias dbs='databricks --profile STAGE '
+
+###### Prometheus
+alias promql-staging='promql --host ${PAI_THANOS_STAGING_URL}'
+alias promql-prod='promql --host ${PAI_THANOS_PROD_URL}'
+alias promql-pgl-staging='promql --host ${PAI_THANOS_STAGING_URL}'
+alias promql-pgl-prod='promql --host ${PAI_THANOS_PGL_PROD_URL}'
+alias promql-infra='promql --host ${PAI_THANOS_INFRA_URL}'
+
+##### Frequently used cli command aliases - open-<something>
+alias o-t='code ~/workspace/peopleai/terraform-configurations-people-ai'
+alias o-dot='code ~/workspace/ede-n/dotfiles'
+
+function promql-prod-inspect-label-cardinality {
+  promql-prod --no-headers labels "$1" | while read label; do
+    echo "LABEL: $label"
+    promql-prod --no-headers "count($1) by ($label)"
+  done
+}
+
+function promql-prod-find-metrics-with-name {
+  promql-prod "count({__name__=~\".*$1.*\"}) by (__name__)"
+}
+
+function promql-prod-get-metrics-from-job {
+  promql-prod "count({job=\"$1\"}) by (__name__)"
+}
+
+function promql-prod-get-jobs {
+  promql-prod "count(up) by (job)"
+}
+
+# Productivity
+function times-pai() {
+    local -r YEAR=$(date +'%Y')
+    local -r MONTH=$(date +'%m')
+    local -r D=$(date +'%d')
+
+    DAY=$((D + 1))
+
+    open "https://www.timeanddate.com/worldclock/meetingtime.html?year=${YEAR}&month=${MONTH}&day=${DAY}&p1=137&p2=367&p3=262"
+}

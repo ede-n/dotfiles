@@ -47,9 +47,8 @@ brew 'wget'
 brew 'pyenv'
 brew 'jq'
 brew 'yq'
-brew 'ripgrep'
+
 brew 'go'
-brew 'fzf'
 # https://github.com/sachaos/viddy
 brew 'viddy'
 # Vault
@@ -68,6 +67,11 @@ brew 'minikube'
 brew 'helm'
 brew 'kustomize'
 brew 'argocd'
+
+tap 'derailed/k9s'
+brew 'derailed/k9s/k9s'
+
+brew 'operator-sdk'
 # calculate lines of code
 brew 'cloc'
 # for git diff
@@ -92,7 +96,9 @@ tap 'heroku/brew'
 brew 'heroku'
 
 ## For backstage
-brew 'nvm'
+# -- this has problems with better-sqlite installation dependency libtool
+# brew 'nvm'
+brew 'yarn'
 
 ## CircleCi
 brew 'circleci'
@@ -118,6 +124,9 @@ cask 'git-credential-manager-core'
 cask 'tomighty'
 cask 'docker'
 
+# Visual Studio Code (VSCode)
+cask 'visual-studio-code'
+
 ## Pai Apps
 # VPN client
 cask 'pritunl'
@@ -127,3 +136,44 @@ cask 'lens'
 brew 'warrensbox/tap/tfswitch'
 brew 'terragrunt'
 
+# Compression
+brew 'snappy'
+
+### Experimental
+
+#### https://github.com/charmbracelet/vhs
+tap 'charmbracelet/tap'
+brew 'vhs'
+brew 'ffmpeg'
+brew 'ttyd'
+
+### Google Oauth recertification
+cask 'owasp-zap'
+cask 'firefox'
+
+### Dependency Management Security
+# https://github.com/anchore/grype
+tap 'anchore/grype'
+brew 'grype'
+# https://github.com/anchore/syft
+tap 'anchore/syft'
+brew 'syft'
+# https://github.com/ossf/scorecard#what-is-scorecards
+brew 'scorecard'
+
+cask 'discord'
+
+### Rust cli productivity tools
+brew 'zoxide'
+brew 'fzf'
+brew 'ripgrep'
+
+### Backstage.io
+brew 'pkg-config'
+brew 'cairo'
+brew 'pango'
+brew 'libpng'
+brew 'jpeg'
+brew 'giflib'
+brew 'librsvg'
+brew 'adr-tools'
